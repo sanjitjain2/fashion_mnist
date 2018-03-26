@@ -10,6 +10,19 @@ import matplotlib.image as mpimg
 from keras.models import load_model
 from keras.preprocessing import image
 
+label_dict = {
+ 0: 'T-shirt/top',
+ 1: 'Trouser',
+ 2: 'Pullover',
+ 3: 'Dress',
+ 4: 'Coat',
+ 5: 'Sandal',
+ 6: 'Shirt',
+ 7: 'Sneaker',
+ 8: 'Bag',
+ 9: 'Ankle boot'
+}
+
 target_size = (28,28)
 model = load_model('fashion_mnist_2.h5')
 
@@ -20,7 +33,9 @@ def predict(model, img, target_size, top_n=1):
     x = image.img_to_array(temp)
     x = np.expand_dims(x, axis=0)
     preds = model.predict(x)
-    return preds
+    output_label = [np.where(r==1)[0] for r in preds]
+    return int(output_label[0])
+    
 
 
 if __name__=="__main__":
@@ -35,12 +50,5 @@ if __name__=="__main__":
 
     if args.image is not None:
         img = Image.open(args.image).convert('L')
-        preds = predict(model, img, target_size)
-        print preds
-    """
-    if args.image_url is not None:
-        response = requests.get(args.image_url)
-        img = Image.open(BytesIO(response.content)).convert('L')
-        preds = predict(model, img, target_size)
-        print preds
-"""
+        label = predict(model, img, target_size)
+        print label_dict[label]
