@@ -52,6 +52,7 @@ dropout_1 (Dropout)          (None, 1024)
 dense_2 (Dense)              (None, 10)                
 
 =================================================================
+
 Total params: 3,274,634     
 
 Trainable params: 3,274,634     
