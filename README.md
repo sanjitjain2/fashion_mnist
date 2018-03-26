@@ -34,13 +34,21 @@ Validation Accuracy - 92.38%
 Layer (type)                 Output Shape              Param #
 
 =================================================================
+
 conv2d_1 (Conv2D)            (None, 28, 28, 32)        832
+
 max_pooling2d_1 (MaxPooling2 (None, 14, 14, 32)        0
+
 conv2d_2 (Conv2D)            (None, 14, 14, 64)        51264
+
 max_pooling2d_2 (MaxPooling2 (None, 7, 7, 64)          0
+
 flatten_1 (Flatten)          (None, 3136)              0
+
 dense_1 (Dense)              (None, 1024)              3212288
+
 dropout_1 (Dropout)          (None, 1024)              0
+
 dense_2 (Dense)              (None, 10)                10250
 
 =================================================================
